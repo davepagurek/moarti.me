@@ -1,8 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  color:#FFF;
+  background-color:#c41411;
 }
 
-a {
-  color: #00B7FF;
+#content {
+  width:1000px;
+  margin:20px auto;
 }
