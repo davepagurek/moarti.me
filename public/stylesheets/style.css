@@ -4,9 +4,125 @@ body {
   font-family: 'Open Sans', sans-serif;
   color:#FFF;
   background-color:#c41411;
+  margin:0;
+  padding:0;
 }
 
-#content {
+h1 {
+  font-weight: lighter;
+  font-size:50px;
+  padding: 10px 0;
+  margin:0;
+}
+
+h2 {
+  padding:10px 0;
+  font-weight:lighter;
+  font-size: 30px;
+  text-align:center;
+}
+
+input {
+  background-color:transparent;
+  border:0;
+  border-bottom:1px solid rgba(255, 255, 255, 0.5);
+  font-size: inherit;
+  color:#FFF;
+  margin-left:20px;
+  width:400px;
+}
+
+input:hover, input:focus {
+  border-bottom: 1px solid #FFF;
+}
+
+input::-webkit-calendar-picker-indicator {
+  color:rgba(255, 255, 255, 0.5);
+}
+
+input::-webkit-calendar-picker-indicator:hover {
+  color:#FFF;
+  background-color:transparent;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+input::-webkit-input-placeholder {
+   color: rgba(255, 255, 255, 0.5);
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+   color: rgba(255, 255, 255, 0.5);
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(255, 255, 255, 0.5);
+}
+
+input:-ms-input-placeholder {  
+   color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="submit"] {
+  border:1px solid #FFF;
+  border-radius:5px;
+  width:auto;
+  padding: 20px 40px;
+  color:#FFF;
+  margin:40px auto 20px auto;
+  display:block;
+  transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  color:#c41411;
+  background-color: #FFF;
+}
+
+.input {
+  margin-bottom: 15px;
+}
+
+form {
+  font-size:20px;
+  text-align:center;
+}
+
+form label {
+  width: 80px;
+  display:inline-block;
+  font-weight:lighter;
+  font-style:italic;
+  text-align:left;
+}
+
+.padding {
   width:1000px;
   margin:20px auto;
+}
+
+.section {
+  padding:10px;
+}
+
+input {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.3s linear;
+}
+
+/* Header style */
+#header {
+  color:#333;
+  background-color:#FFF;
+}
+
+@media all and (max-width: 1200px) {
+  .padding {
+    width:auto;
+    margin:20px;
+  }
 }
