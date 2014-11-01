@@ -13,13 +13,7 @@ var app = express();
 
 var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost/moartime');
-
-var User = mongoose.model('User', {
-    identifier: String,
-    displayName: String,
-    email: String
-});
+require("./models");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
