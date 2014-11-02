@@ -14,10 +14,10 @@ n: number of people
 people: 2d array of Event objects (i = person index, j = event index)
 */
 function timeRank (n,people) {
-	var people = [];
+	/* var people = [];
 	for (var i = 0; i < 3; i++) {
 		//change to: convert Date objects to Time objects (i.e. make Bilal's parameters work with my objects) OR change my stuff to his format
-		/* var busy = [];
+		var busy = [];
 		for (var j = 0; j < 5; j++) {
 			//var start = new Time (Math.min(Math.floor(Math.random()*24),23),Math.min(Math.floor(Math.random()*60),59));
 			var start = new Date();
@@ -40,24 +40,24 @@ function timeRank (n,people) {
 			}
 		} */
 		//end
-		busy.sort (function (a,b) {
-			if (a.startTime.getHours() > b.startTime.getHours()) {
+	busy.sort (function (a,b) {
+		if (a.startTime.getHours() > b.startTime.getHours()) {
+			return 1;
+		} else if (b.startTime.getHours() > a.startTime.getHours()) {
+			return -1;
+		} else {
+			if (a.startTime.getMinutes() > b.startTime.getMinutes()) {
 				return 1;
-			} else if (b.startTime.getHours() > a.startTime.getHours()) {
+			} else if (b.startTime.getMinutes() > a.startTime.getMinutes()) {
 				return -1;
 			} else {
-				if (a.startTime.getMinutes() > b.startTime.getMinutes()) {
-					return 1;
-				} else if (b.startTime.getMinutes() > a.startTime.getMinutes()) {
-					return -1;
-				} else {
-					return 0;
-				}
+				return 0;
 			}
-		});
+		}
+	});
 		//console.log(busy);
-		//people.push(busy); //delete this
-	}
+		/* people.push(busy); //delete this
+	} */
 
 	//console.log(people[0].busy[0]);
 	//console.log('\n');
