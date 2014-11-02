@@ -27,7 +27,7 @@ window.addEventListener("load", function() {
           result.event.attendees.forEach(function(attendee) {
             var person = document.createElement("div");
             person.className = "person";
-            person.innerHTML = "<img src='/user.jpg' class='thumbnail' /> " + attendee;
+            person.innerHTML = "<img src='/user.jpg' class='thumbnail' /> " + attendee.displayName;
             document.getElementById("people").appendChild(person);
           });
           //document.getElementById("attendees").innerHTML = result.event.attendees.length + (result.event.attendees.length==1?" person":" people");
