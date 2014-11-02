@@ -11,9 +11,36 @@ body {
 h1 {
   font-weight: lighter;
   font-size:50px;
+  line-height:50px;
   padding: 10px 0;
   margin:0;
   display:inline-block;
+  vertical-align:middle;
+  text-align:left;
+}
+
+h1 strong {
+  font-weight:normal;
+}
+
+#login {
+  display:inline-block;
+  float:right;
+  vertical-align:middle;
+  height:30px;
+  line-height:30px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius:5px;
+  border: 1px solid #000;
+  color:#000;
+  text-decoration:none;
+  transition: all 0.3s ease;
+}
+
+#login:hover {
+  background-color:#000;
+  color:#FFF;
 }
 
 h1 i {
@@ -34,8 +61,22 @@ h3 {
   padding-bottom:20px;
 }
 
+h4 {
+  font-weight:bold;
+  font-size:16px;
+  padding:10px 0;
+  margin:0;
+}
+
+h5 {
+  margin: 30px 0;
+  font-weight:lighter;
+  font-style:italic;
+  font-size:15px;
+}
+
 .thumbnail {
-  display:inline-block;
+  display:inline;
   width:50px;
   height:50px;
   border-radius:50%;
@@ -43,7 +84,22 @@ h3 {
   margin-right:10px;
 }
 
+.person {
+  width: 400px;
+  border-bottom:1px solid #FFF;
+  margin:20px auto 0 auto;
+  padding-bottom:20px;
+  text-align:left;
+}
+
+.person:last-of-type {
+  border:0;
+}
+
 input {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.3s linear;
   background-color:transparent;
   border:0;
   border-bottom:1px solid rgba(255, 255, 255, 0.5);
@@ -51,6 +107,10 @@ input {
   color:#FFF;
   margin-left:20px;
   width:400px;
+}
+
+input:focus {
+  outline:0;
 }
 
 input:hover, input:focus {
@@ -88,6 +148,7 @@ input:-ms-input-placeholder {
 }
 
 input[type="submit"], a.button {
+  cursor:pointer;
   border:1px solid #FFF;
   border-radius:5px;
   width:auto;
@@ -112,7 +173,7 @@ input[type="checkbox"] {
   width:30px;
   height:30px;
   vertical-align:middle;
-  margin:20px;
+  margin:20px 20px 20px 0;
   border:0;
   background-color:#FFF;
 }
@@ -134,25 +195,25 @@ form label {
   text-align:left;
 }
 
+.message {
+  text-align:center;
+}
+
 .padding {
   width:1000px;
   margin:20px auto;
+  text-align:center;
 }
 
 .section {
   padding:10px;
 }
 
-input {
-  box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
-  transition: all 0.3s linear;
-}
-
 /* Header style */
-#header {
+#header, #header .padding {
   color:#333;
   background-color:#FFF;
+  text-align:left;
 }
 
 #event {
@@ -162,6 +223,10 @@ input {
 #attend {
   text-align:center;
   font-size: 20px;
+}
+
+#public {
+  text-align:center;
 }
 
 #calendar {
@@ -177,9 +242,34 @@ input {
   padding:20px;
 }
 
+#calculateAction {
+  margin-top:40px;
+}
+
 @media all and (max-width: 1200px) {
   .padding {
     width:auto;
     margin:20px;
   }
+}
+
+button {
+	display: inline-block;
+	text-align: right;
+	background-color: #FFF;
+  border-bottom:1px solid rgba(255, 255, 255, 0.5);
+  font-size: inherit;
+  color: transparent;
+	padding: 0px;
+  width: auto;
+	height: auto;
+	font-family: 'Open Sans', sans-serif;
+}
+
+button:hover, button:focus {
+  border-bottom: 1px solid #FFF;
+}
+
+a{
+	display: block;
 }

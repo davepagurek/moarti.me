@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Free Pancakes</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/animate.js"></script>
+    <script type="text/javascript" src="js/eventAdmin.js"></script>
+	</head>
+	<body>
+    <div class="section" id="header">
+      <div class="padding">
+        <h1><i class="fa fa-calendar"></i> Moar<strong>ti.me</strong></h1>
+        <a id="login" href="auth/google">Log in</a>
+      </div>
+    </div>
+    <div class="section" id="event">
+      <div class="padding">
+        <h2>
+          Free Pancakes
+		    </h2>
+        <h3><img class="thumbnail" src="user.jpg" /> Hosted by <strong>You</strong></h3>
+        <div id="public">
+          <h4>Public link: <input type="text" id="link" /></h4>
+          <h5>Send this link to people so they can register for your event!</h5>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="padding">
+        <h2>Attendees</h2>
+        <div id="people">
+          <div class="person">
+            <img src="tammy.jpg" class="thumbnail"> Tammy Liu
+          </div>
+          <div class="person">
+            <img src="bilal.jpg" class="thumbnail"> Bilal Akhtar
+          </div>
+          <div class="person">
+            <img src="abhishek.jpg" class="thumbnail"> Abhishek Madan
+          </div>
+        </div>
+        
+        <div id="calculateAction">
+          <div class="collapse" id="calculate">
+            <a class="button" id="calculate">Find best time</a>
+          </div>
+
+          <div class="collapse" id="calculating" style="height:0; overflow:hidden;">
+            Calculating...
+          </div>
+
+          <div class="collapse" id="result" style="height:0; overflow:hidden;">
+            Got results
+          </div>
+        </div>
+
+      </div>
+    </div>
+	</body>
+</html>
