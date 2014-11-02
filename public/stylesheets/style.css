@@ -27,6 +27,22 @@ h2 {
   text-align:center;
 }
 
+h3 {
+  font-weight:lighter;
+  text-align:center;
+  font-style:italic;
+  padding-bottom:20px;
+}
+
+.thumbnail {
+  display:inline-block;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  vertical-align:middle;
+  margin-right:10px;
+}
+
 input {
   background-color:transparent;
   border:0;
@@ -71,20 +87,34 @@ input:-ms-input-placeholder {
    color: rgba(255, 255, 255, 0.5);
 }
 
-input[type="submit"] {
+input[type="submit"], a.button {
   border:1px solid #FFF;
   border-radius:5px;
   width:auto;
   padding: 20px 40px;
   color:#FFF;
-  margin:40px auto 20px auto;
-  display:block;
+  margin:20px auto;
   transition: all 0.3s ease;
+  text-decoration:none;
+  display:inline-block;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, a.button:hover {
   color:#c41411;
   background-color: #FFF;
+}
+
+input[type="submit"] {
+  margin-top:40px;
+}
+
+input[type="checkbox"] {
+  width:30px;
+  height:30px;
+  vertical-align:middle;
+  margin:20px;
+  border:0;
+  background-color:#FFF;
 }
 
 .input {
@@ -123,6 +153,28 @@ input {
 #header {
   color:#333;
   background-color:#FFF;
+}
+
+#event {
+  background-color:#ff6f00;
+}
+
+#attend {
+  text-align:center;
+  font-size: 20px;
+}
+
+#calendar {
+  text-align:center;
+  overflow-y:hidden;
+  max-height:0;
+  padding: 0 20px;
+  transition: all 0.3s linear;
+}
+
+#calendar.open {
+  max-height:400px;
+  padding:20px;
 }
 
 @media all and (max-width: 1200px) {
