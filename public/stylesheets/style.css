@@ -16,6 +16,11 @@ h1 {
   margin:0;
   display:inline-block;
   vertical-align:middle;
+  text-align:left;
+}
+
+h1 strong {
+  font-weight:normal;
 }
 
 #login {
@@ -56,6 +61,20 @@ h3 {
   padding-bottom:20px;
 }
 
+h4 {
+  font-weight:bold;
+  font-size:16px;
+  padding:10px 0;
+  margin:0;
+}
+
+h5 {
+  margin: 30px 0;
+  font-weight:lighter;
+  font-style:italic;
+  font-size:15px;
+}
+
 .thumbnail {
   display:inline;
   width:50px;
@@ -63,6 +82,18 @@ h3 {
   border-radius:50%;
   vertical-align:middle;
   margin-right:10px;
+}
+
+.person {
+  width: 400px;
+  border-bottom:1px solid #FFF;
+  margin:20px auto 0 auto;
+  padding-bottom:20px;
+  text-align:left;
+}
+
+.person:last-of-type {
+  border:0;
 }
 
 input {
@@ -171,6 +202,7 @@ form label {
 .padding {
   width:1000px;
   margin:20px auto;
+  text-align:center;
 }
 
 .section {
@@ -178,9 +210,10 @@ form label {
 }
 
 /* Header style */
-#header {
+#header, #header .padding {
   color:#333;
   background-color:#FFF;
+  text-align:left;
 }
 
 #event {
@@ -190,6 +223,10 @@ form label {
 #attend {
   text-align:center;
   font-size: 20px;
+}
+
+#public {
+  text-align:center;
 }
 
 #calendar {
@@ -203,6 +240,10 @@ form label {
 #calendar.open {
   max-height:400px;
   padding:20px;
+}
+
+#calculate {
+  margin:40px auto;
 }
 
 @media all and (max-width: 1200px) {
