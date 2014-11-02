@@ -31,6 +31,6 @@ window.addEventListener("load", function() {
     var params = "title=" + encodeURIComponent(document.getElementById("name").value) + "&start=" + encodeURIComponent(start.value);
     xmlhttp.open("POST", "/events/new", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send();
+    xmlhttp.send(params);
   });
 });
