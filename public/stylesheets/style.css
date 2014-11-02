@@ -155,7 +155,7 @@ input:-ms-input-placeholder {
    color: rgba(255, 255, 255, 0.5);
 }
 
-input[type="submit"], a.button {
+input[type="submit"]{
   cursor:pointer;
   border:1px solid #FFF;
   border-radius:5px;
@@ -168,8 +168,8 @@ input[type="submit"], a.button {
   display:inline-block;
 }
 
-input[type="submit"]:hover, a.button:hover {
-  color:#c41411;
+input[type="submit"]:hover{
+	color:#c41411;
   background-color: #FFF;
 }
 
@@ -261,23 +261,61 @@ form label {
   }
 }
 
-button {
-	display: inline-block;
-	text-align: right;
+a{
+	font-color: inherit;
+}
+
+.button {
+	display: inline;
+	border:1px solid #FFF;
+	border-radius:10px;
 	background-color: #FFF;
   border-bottom:1px solid rgba(255, 255, 255, 0.5);
-  font-size: inherit;
-  color: transparent;
-	padding: 0px;
-  width: auto;
-	height: auto;
-	font-family: 'Open Sans', sans-serif;
+	padding: inherit;
+	font: 'Open Sans', sans-serif;
+	color: #c41411;
+	cursor:pointer;
+  width:auto;
+  padding: 20px 40px;
+  margin:20px auto;
+  transition: all 0.3s ease;
+  text-decoration:none;
+  display:inline-block;
 }
 
-button:hover, button:focus {
-  border-bottom: 1px solid #FFF;
+.button:hover, button:focus{
+  color:#FFF;
+  background-color: #c41411;
+	border-bottom: 1px solid #FFF;
+}
+.button2 {
+	display: inline;
+	border:1px solid #FFF;
+	border-radius:10px;
+	background-color: #c41411;
+  border-bottom:2px solid rgba(255, 255, 255, 0.5);
+	padding: inherit;
+	font: 'Open Sans', sans-serif;
+	color: #FFF;
+	cursor:pointer;
+  width:auto;
+  padding: 20px 40px;
+  margin:20px auto;
+  transition: all 0.3s ease;
+  text-decoration:none;
+  display:inline-block;
 }
 
-a{
-	display: block;
+.button2:hover, button2:focus{
+  color:#c41411;
+  background-color: #FFF;
+	border-bottom: 1px solid #FFF;
+}
+
+p{
+	color: inherit;
+}
+
+.wrapper{
+	text-align: center;
 }
