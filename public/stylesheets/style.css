@@ -186,6 +186,16 @@ input[type="checkbox"] {
   background-color:#FFF;
 }
 
+input[type="file"]{
+	border:0;
+	font-family: inherit;
+	font-color: inherit;
+}
+
+#upload{
+	color:#000;
+}
+
 .input {
   margin-bottom: 15px;
 }
@@ -310,10 +320,6 @@ a{
   color:#c41411;
   background-color: #FFF;
 	border-bottom: 1px solid #FFF;
-}
-
-p{
-	color: inherit;
 }
 
 .wrapper{
