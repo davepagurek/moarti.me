@@ -15,6 +15,7 @@
       <div class="padding">
         <h1><a href="/"><i class="fa fa-calendar"></i> Moar<strong>Ti.me</strong></a></h1>
         <a id="login" href="/logout">Log out</a>
+        <a id="me" href="/users/me"><img title="Me" class="thumbnail" src="/user.jpg"  /></a>
       </div>
     </div>
     <div class="section">
@@ -28,15 +29,16 @@
             <label>Date</label><input type="date" id="date" name="date" required="required" />
             <input type="hidden" value="" id="start" name="start" />
           </div>
-          <!--<div class="input">
+          <div class="input">
             <label>Time</label>
-            <select>
+            <select id="time" name="time">
               <option value="morning">Morning</option>
               <option value="afternoon">Afternoon</option>
               <option value="evening">Evening</option>
+              <option value="night">Night</option>
             </select>
           </div>
-					<div class="input">
+					<!--<div class="input">
 						<label>Image</label>
 							<input type="file" name="pic" accept="image/*">					
 					</div>-->
