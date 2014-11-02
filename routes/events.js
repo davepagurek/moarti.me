@@ -42,9 +42,9 @@ router.post('/new', function(req, res){
 		end: end
 	});
 
-	theEvent.save(function(err){
+	theEvent.save(function(err, newEvent){
 		if (!err) {
-			res.send({success: 1});
+			res.send({success: 1, id: newEvent.id});
 		}
 	});
 });
@@ -56,7 +56,9 @@ router.post('/event/:id/addCalendar', function(req, res){
 	
 	Event.findById(id, function(err, theEvent){
 		google_calendar.calendars.get("primary", function(err, calendar){
-			google_calendar.events.list(calendar.id, function(err, response){
+			google_calendar.events.list(calendar.id, {timeMin: theEvent.start.toISOString(),
+			timeMax: theEvent.end.toISOString()},
+			function(err, response){
 				var items = response.items;
 
 				var processEvent = function(gCalEvent) {
