@@ -189,3 +189,5 @@ function timeRank (n,people) {
 	console.log(top[2]); */
 	return top;
 }
+
+module.export = {Event:Event,timeRank:timeRank};
