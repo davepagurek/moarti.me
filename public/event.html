@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>MoarTi.me</title>
+    <meta name="viewport" content="width=device-width" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="/js/animate.js"></script>
@@ -10,25 +11,26 @@
     <div class="section" id="header">
       <div class="padding">
         <h1>
-          <h1><i class="fa fa-calendar"></i> Moar<strong>Ti.me</strong></h1>
+          <h1><a href="/"><i class="fa fa-calendar"></i> Moar<strong>Ti.me</strong></a></h1>
           <a id="login" href="/auth/google">Log in</a>
         </h1>
       </div>
     </div>
-    <div class="section" id="event">
+    <div class="section hidden" id="event">
       <div class="padding">
         <h2></h2>
-        <h3><img class="thumbnail" src="/user.jpg" /> Hosted by <strong id="host">David Hasselhoff</strong></h3>
-        <div id="date"></div>
+        <h3><img class="thumbnail" src="/user.jpg" /> Hosted by <strong id="host">David Hasselhof</strong> on <span id="date"></span></h3>
         <div id="attendees"></div>
       </div>
     </div>
-    <div class="section">
+    <div class="section hidden">
       <div class="padding">
         <div id="attend">
-          <input type="checkbox" id="attending" name="attending" /><label for="attending">Attend this event</label>
+          <input type="checkbox" id="attending" name="attending" />
+          <label for="attending" class="check"></label>
+          <label for="attending">Attend this event</label>
         </div>
-        <div id="calendar" class="hidden">
+        <div id="calendar">
           <div class="collapse" id="upload">
             <a class="button">Upload Google Calendar</a>
           </div>

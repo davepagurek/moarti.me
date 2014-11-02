@@ -30,7 +30,10 @@ window.addEventListener("load", function() {
             person.innerHTML = "<img src='/user.jpg' class='thumbnail' /> " + attendee.displayName;
             document.getElementById("people").appendChild(person);
           });
-          //document.getElementById("attendees").innerHTML = result.event.attendees.length + (result.event.attendees.length==1?" person":" people");
+          
+          Array.prototype.forEach.call(document.getElementsByClassName("section"), function(element) {
+            element.classList.remove("hidden");
+          });
         } else {
           console.log("error");
         }
@@ -60,11 +63,11 @@ window.addEventListener("load", function() {
             
             var s = new Date(evt.startTime);
             var start = document.createElement("div");
-            start.innerHTML = "Start: " + s.getHours() + ":" + s.getMinutes();
+            start.innerHTML = "Start: " + (s.getHours()<10?"0":"") + s.getHours() + ":" + (s.getMinutes()<10?"0":"") + s.getMinutes();
             
             var e = new Date(evt.endTime);
             var end = document.createElement("div");
-            end.innerHTML = "End: " + e.getHours() + ":" + e.getMinutes();
+            end.innerHTML = "End: " + (e.getHours()<10?"0":"") + e.getHours() + ":" + (e.getMinutes()<10?"0":"") + e.getMinutes();
             
             option.appendChild(start);
             option.appendChild(end);
