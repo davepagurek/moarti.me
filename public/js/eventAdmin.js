@@ -51,14 +51,30 @@ window.addEventListener("load", function() {
       if (xmlhttp.readyState == 4 ) {
         if(xmlhttp.status == 200){
 
-          var result = JSON.parse(xmlhttp.responseText);
-
-          if (result.success) {
-            hide(calculating);
-            show(result);
-          } else {
-            console.log("error");
-          }
+          var r = JSON.parse(xmlhttp.responseText);
+          result.innerHTML = "";
+          
+          r.niceTimes.forEach(function(evt) {
+            var option = document.createElement("div");
+            option.className = "option";
+            
+            var s = new Date(evt.startTime);
+            var start = document.createElement("div");
+            start.innerHTML = "Start: " + s.getHours() + ":" + s.getMinutes();
+            
+            var e = new Date(evt.endTime);
+            var end = document.createElement("div");
+            end.innerHTML = "End: " + e.getHours() + ":" + e.getMinutes();
+            
+            option.appendChild(start);
+            option.appendChild(end);
+            
+            result.appendChild(option);
+          });
+          
+          hide(calculating);
+          show(result);
+          console.log(r);
         } else {
           console.log("error");
         }
@@ -67,6 +83,8 @@ window.addEventListener("load", function() {
 
     xmlhttp.open("POST", "calculate", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send();
+    setTimeout(function() {
+      xmlhttp.send();
+    }, 600);
   });
 });

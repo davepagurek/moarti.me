@@ -68,6 +68,8 @@ window.addEventListener("load", function() {
 
     xmlhttp.open("POST", "addCalendar", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send();
+    setTimeout(function() {
+      xmlhttp.send();
+    }, 600);
   });
 });
