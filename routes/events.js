@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 var mongoose = require('mongoose');
 var Event = mongoose.model("Event");
 var User = mongoose.model("User");
@@ -29,6 +30,14 @@ router.get('/event/:id', function(req, res){
 	});
 });
 
+router.get('/event/:id/view', function(req, res){
+	res.sendFile(path.resolve(__dirname, "../public/event.html"));
+});
+
+router.get('/event/:id/admin', function(req, res){
+	res.sendFile(path.resolve(__dirname, "../public/eventAdmin.html"));
+});
+
 router.post('/new', function(req, res){
 	var userId = req.user._id;
 	var title = req.body.title;
@@ -55,6 +64,9 @@ router.post('/event/:id/addCalendar', function(req, res){
 	var google_calendar = new gcal.GoogleCalendar(req.user.accessToken);
 	
 	Event.findById(id, function(err, theEvent){
+		theEvent.attendees.push(req.user._id);
+		theEvent.save();
+		
 		google_calendar.calendars.get("primary", function(err, calendar){
 			google_calendar.events.list(calendar.id, {timeMin: theEvent.start.toISOString(),
 			timeMax: theEvent.end.toISOString()},
