@@ -3,6 +3,7 @@ window.addEventListener("load", function() {
   var start = document.getElementById("start");
   var create = document.getElementById("create");
   var creating = document.getElementById("creating");
+  var time = document.getElementById("time");
   date.addEventListener("input", function() {
     start.value = new Date(date.value).toISOString();
   });
@@ -28,7 +29,7 @@ window.addEventListener("load", function() {
       }
     };
 
-    var params = "title=" + encodeURIComponent(document.getElementById("name").value) + "&start=" + encodeURIComponent(start.value);
+    var params = "title=" + encodeURIComponent(document.getElementById("name").value) + "&start=" + encodeURIComponent(start.value) + "&time=" + encodeURIComponent(time.value);
     xmlhttp.open("POST", "/events/new", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);

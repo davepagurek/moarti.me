@@ -33,6 +33,14 @@ h1 strong {
   font-weight:normal;
 }
 
+#me {
+  display:inline-block;
+  float:right;
+  vertical-align:middle;
+  margin-top:10px;
+  margin-right:10px;
+}
+
 #login {
   display:inline-block;
   float:right;
