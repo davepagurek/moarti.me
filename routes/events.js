@@ -11,12 +11,20 @@ var timerank = require("./timerank");
 
 var gcal = require("google-calendar");
 
+router.get('/event/:id/view', function(req, res){
+	if (!req.user || req.user === undefined) {
+		res.sendFile(path.resolve(__dirname, "../public/eventLoggedOut.html"));
+	} else {
+		res.sendFile(path.resolve(__dirname, "../public/event.html"));
+	}
+});
+
 router.use(function(req, res, next) {
 	if (!req.user || req.user === undefined) {
 		if (req.xhr) {
 			res.status(401).send({"error": "Unauthorized"});
 		} else {
-			res.redirect("/auth/google");
+			res.redirect("/");
 		}
 	} else {
 		next();
@@ -60,10 +68,6 @@ router.get('/event/:id', function(req, res){
 	});
 });
 
-router.get('/event/:id/view', function(req, res){
-	res.sendFile(path.resolve(__dirname, "../public/event.html"));
-});
-
 /*router.get('/event/:id/attendees', function(req, res) {
 	var id = req.body.id;
 
@@ -77,6 +81,10 @@ router.get('/event/:id/view', function(req, res){
 });*/
 
 router.get('/event/:id/admin', function(req, res){
+	if (err || !theEvent || !theEvent.user.equals(req.user._id)) {
+		res.status(404).send();
+		return;
+	}
 	res.sendFile(path.resolve(__dirname, "../public/eventAdmin.html"));
 });
 
@@ -163,6 +171,11 @@ router.post('/event/:id/calculate', function(req, res){
 	var eventId = req.params.id;
 
 	Event.findById(eventId, function(err, theEvent){
+		if (err || !theEvent || !theEvent.user.equals(req.user._id)) {
+			res.status(404).send();
+			return;
+		}
+
 		CalEvent.find({_event: eventId}, function(err, calEvents) {
 
 			var abhishekInput = {};

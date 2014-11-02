@@ -5,9 +5,9 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
 	if (!req.user || req.user === undefined) {
-		res.sendFile(path.resolve(__dirname, "../public/index.html"));
+		res.sendFile(path.resolve(__dirname, "../views/index.html"));
 	} else {
-		res.sendFile(path.resolve(__dirname, "../public/create.html"));
+		res.sendFile(path.resolve(__dirname, "../views/create.html"));
 	}
 
 });
