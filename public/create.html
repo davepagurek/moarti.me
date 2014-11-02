@@ -6,6 +6,7 @@
     </title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/animate.js"></script>
     <script type="text/javascript" src="/js/create.js"></script>
   </head>
   <body>
@@ -34,7 +35,12 @@
               <option value="evening">Evening</option>
             </select>
           </div>
-          <input type="submit" value="Create" />
+          <div class="collapse" id="create">
+            <a class="button">Create</a>
+          </div>
+          <div class="collapse" id="creating" style="height:0; overflow:hidden;">
+            Creating...
+          </div>
         </form>
       </div>
     </div>
