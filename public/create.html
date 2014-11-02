@@ -2,23 +2,24 @@
 <html>
   <head>
     <title>
-      Moarti.me - Create Event
+      MoarTi.me
     </title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <script type="text/javascript" src="js/create.js"></script>
+    <script type="text/javascript" src="js/animate.js"></script>
+    <script type="text/javascript" src="/js/create.js"></script>
   </head>
   <body>
     <div class="section" id="header">
       <div class="padding">
-        <h1><i class="fa fa-calendar"></i> Moar<strong>ti.me</strong></h1>
+        <h1><i class="fa fa-calendar"></i> Moar<strong>Ti.me</strong></h1>
         <a id="login" href="auth/google">Log in</a>
       </div>
     </div>
     <div class="section">
       <div class="padding">
         <h2>Create Event</h2>
-        <form action="" method="post">
+        <form action="/events/new" method="post">
           <div class="input">
             <label>Name</label><input type="text" id="name" name="name" required="required" placeholder="e.g. Free Pancakes" />
           </div>
@@ -34,11 +35,20 @@
               <option value="evening">Evening</option>
             </select>
           </div>
+<<<<<<< HEAD
 					<div class="input">
 						<label>Image</label>
 							<input type="file" name="pic" accept="image/*">					
 					</div>
           <input type="submit" value="Create" />
+=======
+          <div class="collapse" id="create">
+            <a class="button">Create</a>
+          </div>
+          <div class="collapse" id="creating" style="height:0; overflow:hidden;">
+            Creating...
+          </div>
+>>>>>>> origin/master
         </form>
       </div>
     </div>

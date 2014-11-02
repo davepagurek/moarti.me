@@ -3,6 +3,30 @@ window.addEventListener("load", function() {
   var attending = document.getElementById("attending");
   var calendar = document.getElementById("calendar");
   var upload = document.getElementById("upload");
+  
+  var results = /event\/(.*)\/view/.exec(document.URL);
+  var id = results[1];
+  
+  var getEventInfo = function() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4 ) {
+        if(xmlhttp.status == 200){
+
+          var result = JSON.parse(xmlhttp.responseText);
+          document.getElementsByTagName("h2")[0].innerHTML = result.event.title;
+        } else {
+          console.log("error");
+        }
+      }
+    };
+
+    xmlhttp.open("GET", "/events/event/" + id, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+  }
+  getEventInfo();
+  
   attending.addEventListener("change", function() {
     if (attending.checked) {
       calendar.classList.add("open");
