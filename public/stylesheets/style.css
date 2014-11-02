@@ -381,12 +381,13 @@ form label {
 }
 
 #upload label {
-  width:100px;
+  width:90px;
+  display:inline-block;
   text-align:right;
 }
 
 #upload input[type="text"] {
-  margin-left:5px;
+  margin-left:10px;
   width: 200px;
 }
 
