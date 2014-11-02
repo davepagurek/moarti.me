@@ -15,6 +15,13 @@ window.addEventListener("load", function() {
 
           var result = JSON.parse(xmlhttp.responseText);
           document.getElementsByTagName("h2")[0].innerHTML = result.event.title;
+          document.getElementsByTagName("title")[0].innerHTML = result.event.title;
+          document.getElementById("host").innerHTML = result.event.user.displayName;
+          
+          var date = new Date(result.event.start);
+          var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          document.getElementById("date").innerHTML = month[date.getMonth()] + " " + date.getDate();
+          document.getElementById("attendance").innerHTML = result.event.attendees.length;
         } else {
           console.log("error");
         }
