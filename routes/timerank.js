@@ -40,21 +40,24 @@ function timeRank (n,people) {
 			}
 		} */
 		//end
-	busy.sort (function (a,b) {
-		if (a.startTime.getHours() > b.startTime.getHours()) {
-			return 1;
-		} else if (b.startTime.getHours() > a.startTime.getHours()) {
-			return -1;
-		} else {
-			if (a.startTime.getMinutes() > b.startTime.getMinutes()) {
+	people.forEach(function(busy){
+		busy.sort (function (a,b) {
+			if (a.startTime.getHours() > b.startTime.getHours()) {
 				return 1;
-			} else if (b.startTime.getMinutes() > a.startTime.getMinutes()) {
+			} else if (b.startTime.getHours() > a.startTime.getHours()) {
 				return -1;
 			} else {
-				return 0;
+				if (a.startTime.getMinutes() > b.startTime.getMinutes()) {
+					return 1;
+				} else if (b.startTime.getMinutes() > a.startTime.getMinutes()) {
+					return -1;
+				} else {
+					return 0;
+				}
 			}
-		}
+		});
 	});
+	
 		//console.log(busy);
 		/* people.push(busy); //delete this
 	} */
