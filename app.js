@@ -92,6 +92,11 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { successRedirect: '/',
                                     failureRedirect: '/login'}));
 
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/events', require('./routes/events'));

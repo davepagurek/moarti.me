@@ -13,7 +13,11 @@ var gcal = require("google-calendar");
 
 router.use(function(req, res, next) {
 	if (!req.user || req.user === undefined) {
-		res.status(401).send({"error": "Unauthorized"});
+		if (req.xhr) {
+			res.status(401).send({"error": "Unauthorized"});
+		} else {
+			res.redirect("/auth/google");
+		}
 	} else {
 		next();
 	}
