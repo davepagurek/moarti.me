@@ -11,9 +11,31 @@ body {
 h1 {
   font-weight: lighter;
   font-size:50px;
+  line-height:50px;
   padding: 10px 0;
   margin:0;
   display:inline-block;
+  vertical-align:middle;
+}
+
+#login {
+  display:inline-block;
+  float:right;
+  vertical-align:middle;
+  height:30px;
+  line-height:30px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius:5px;
+  border: 1px solid #000;
+  color:#000;
+  text-decoration:none;
+  transition: all 0.3s ease;
+}
+
+#login:hover {
+  background-color:#000;
+  color:#FFF;
 }
 
 h1 i {
@@ -44,6 +66,9 @@ h3 {
 }
 
 input {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.3s linear;
   background-color:transparent;
   border:0;
   border-bottom:1px solid rgba(255, 255, 255, 0.5);
@@ -112,7 +137,7 @@ input[type="checkbox"] {
   width:30px;
   height:30px;
   vertical-align:middle;
-  margin:20px;
+  margin:20px 20px 20px 0;
   border:0;
   background-color:#FFF;
 }
@@ -141,12 +166,6 @@ form label {
 
 .section {
   padding:10px;
-}
-
-input {
-  box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
-  transition: all 0.3s linear;
 }
 
 /* Header style */
