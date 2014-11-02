@@ -7,6 +7,8 @@ var User = mongoose.model("User");
 var CalEvent = mongoose.model("CalEvent");
 var Q = require("q");
 
+var timerank = require("./timerank");
+
 var gcal = require("google-calendar");
 
 router.get('/event/:id', function(req, res){
