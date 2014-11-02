@@ -21,3 +21,10 @@ var Event = mongoose.model('Event', {
 		mongoose.Schema.Types.ObjectId
 	]
 });
+
+var CalEvent = mongoose.model('CalEvent', {
+	_event: {type: mongoose.Schema.Types.ObjectId, ref: "Event"},
+	_user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
+	start: Date,
+	end: Date
+});
