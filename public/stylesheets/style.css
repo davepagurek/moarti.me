@@ -96,7 +96,7 @@ h5 {
   border:0;
 }
 
-input {
+input, select {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   transition: all 0.3s linear;
@@ -109,11 +109,19 @@ input {
   width:400px;
 }
 
+select {
+  -webkit-appearance: none;
+}
+
 input:focus {
   outline:0;
 }
 
-input:hover, input:focus {
+option {
+  color: #000;
+}
+
+input:hover, input:focus, select:hover {
   border-bottom: 1px solid #FFF;
 }
 
