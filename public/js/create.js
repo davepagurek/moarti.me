@@ -18,7 +18,7 @@ window.addEventListener("load", function() {
           var result = JSON.parse(xmlhttp.responseText);
 
           if (result.success) {
-            window.location.href = "/event/" + result.id;
+            window.location.href = "/events/event/" + result.id + "/view";
           } else {
             console.log("error");
           }
@@ -28,7 +28,8 @@ window.addEventListener("load", function() {
       }
     };
 
-    xmlhttp.open("GET", "addCalendar", true);
+    var params = "title=" + encodeURIComponent(document.getElementById("name").value) + "&start=" + encodeURIComponent(start.value);
+    xmlhttp.open("POST", "/events/new", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send();
   });
