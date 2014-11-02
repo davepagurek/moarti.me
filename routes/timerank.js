@@ -223,9 +223,10 @@ function timeRank (n,people,pref) {
 				top.push(temp);
 			}
 		} else if (hi == 1) {
-			if (low == 0) {
+			if (low != 1) {
 				temp.endTime.setHours(pref.endTime.setHours());
 				temp.endTime.setMinutes(pref.endTime.setMinutes());
+				top.push(temp);
 			}
 		}
 	}
