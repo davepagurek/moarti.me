@@ -20,7 +20,10 @@ window.addEventListener("load", function() {
           var date = new Date(result.event.start);
           var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
           document.getElementById("date").innerHTML = month[date.getMonth()] + " " + date.getDate();
-          document.getElementById("attendees").innerHTML = result.event.attendees.length + (result.event.attendees.length==1?" person":" people");
+          document.getElementById("attendees").innerHTML = result.event.attendees.length + (result.event.attendees.length==1?" person is":" people are") + " attending";
+          Array.prototype.forEach.call(document.getElementsByClassName("section"), function(element) {
+            element.classList.remove("hidden");
+          });
         } else {
           console.log("error");
         }
@@ -32,7 +35,6 @@ window.addEventListener("load", function() {
     xmlhttp.send();
   }
   getEventInfo();
-  
   attending.addEventListener("change", function() {
     if (attending.checked) {
       calendar.classList.add("open");

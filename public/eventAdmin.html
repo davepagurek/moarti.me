@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>MoarTi.me</title>
+    <meta name="viewport" content="width=device-width" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="/js/animate.js"></script>
@@ -9,34 +10,24 @@
 	<body>
     <div class="section" id="header">
       <div class="padding">
-        <h1><i class="fa fa-calendar"></i> Moar<strong>Ti.me</strong></h1>
+        <h1><a href="/"><i class="fa fa-calendar"></i> Moar<strong>Ti.me</strong></a></h1>
         <a id="login" href="/auth/google">Log in</a>
       </div>
     </div>
-    <div class="section" id="event">
+    <div class="section hidden" id="event">
       <div class="padding">
         <h2></h2>
-        <h3><img class="thumbnail" src="/user.jpg" /> Hosted by <strong>You</strong></h3>
-        <div id="date"></div>
+        <h3><img class="thumbnail" src="/user.jpg" /> Hosted by <strong>You</strong> on <span id="date"></span></h3>
         <div id="public">
           <h4>Public link: <input type="text" id="link" /></h4>
           <h5>Send this link to people so they can register for your event!</h5>
         </div>
       </div>
     </div>
-    <div class="section">
+    <div class="section hidden">
       <div class="padding">
         <h2>Attendees</h2>
         <div id="people">
-          <!--<div class="person">
-            <img src="/tammy.jpg" class="thumbnail"> Tammy Liu
-          </div>
-          <div class="person">
-            <img src="/bilal.jpg" class="thumbnail"> Bilal Akhtar
-          </div>
-          <div class="person">
-            <img src="/abhishek.jpg" class="thumbnail"> Abhishek Madan
-          </div>-->
         </div>
         
         <div id="calculateAction">
