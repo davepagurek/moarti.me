@@ -18,7 +18,7 @@ window.addEventListener("load", function() {
           var result = JSON.parse(xmlhttp.responseText);
 
           if (result.success) {
-            window.location.href = "/events/event/" + result.id + "/view";
+            window.location.href = "/events/event/" + result.id + "/admin";
           } else {
             console.log("error");
           }
