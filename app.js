@@ -83,7 +83,7 @@ app.use(passport.session());
 
 
 app.get('/auth/google', passport.authenticate('google', {session:true ,
-                                    scope: ["openid", "profile", "email"]}));
+                                    scope: ["openid", "profile", "email", "https://www.googleapis.com/auth/calendar.readonly"]}));
 
 // Google will redirect the user to this URL after authentication.  Finish
 // the process by verifying the assertion.  If valid, the user will be
