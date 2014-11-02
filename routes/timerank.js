@@ -209,7 +209,7 @@ function timeRank (n,people,pref) {
 	});
 
 	top = []; //[intervals[0].interval,intervals[1].interval,intervals[2].interval]];
-	for (var i = 0; i < intervals.length || top.length < 3; i++) {
+	for (var i = 0; i < intervals.length && top.length < 3; i++) {
 		var temp = intervals[i].interval;
 		var hi = inInterval(pref,temp.endTime);
 		var low = inInterval(pref,temp.startTime);
