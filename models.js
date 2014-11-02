@@ -8,7 +8,9 @@ var User = mongoose.model('User', {
     accessToken: String,
     refreshToken: String,
     displayName: String,
-    email: String
+    email: String,
+
+    photoLink: String
 });
 
 var Event = mongoose.model('Event', {
