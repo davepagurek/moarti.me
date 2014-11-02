@@ -69,6 +69,10 @@ passport.use(new GoogleStrategy({
                 email: profile.emails[0].value
             });
 
+            if (profile.photos && profile.photos.length > 0) {
+                user.photoLink = profile.photos[0].value;
+            }
+
             user.save(function(err, user){
                 done(err, user);
             });

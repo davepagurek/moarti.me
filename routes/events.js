@@ -43,6 +43,7 @@ router.get('/event/:id', function(req, res){
 			event: {
 				id: theEvent._id,
 				user: {
+					id: theEvent.user._id,
 					displayName: theEvent.user.displayName
 				},
 				title: theEvent.title,
@@ -59,6 +60,7 @@ router.get('/event/:id', function(req, res){
 			.then(function(attendees){
 				response.event.attendees = attendees.map(function(attendee){
 					return {
+						id: attendee._id,
 						displayName: attendee.displayName
 					};
 				});
