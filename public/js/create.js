@@ -43,6 +43,6 @@ window.addEventListener("load", function() {
     var params = "title=" + encodeURIComponent(document.getElementById("name").value) + "&start=" + encodeURIComponent(start) + "&end=" + encodeURIComponent(end);
     xmlhttp.open("POST", "/events/new", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //xmlhttp.send(params);
+    xmlhttp.send(params);
   });
 });
