@@ -17,7 +17,7 @@ function timeRank (n,people) {
 	var people = [];
 	for (var i = 0; i < 3; i++) {
 		//change to: convert Date objects to Time objects (i.e. make Bilal's parameters work with my objects) OR change my stuff to his format
-		var busy = [];
+		/* var busy = [];
 		for (var j = 0; j < 5; j++) {
 			//var start = new Time (Math.min(Math.floor(Math.random()*24),23),Math.min(Math.floor(Math.random()*60),59));
 			var start = new Date();
@@ -38,7 +38,7 @@ function timeRank (n,people) {
 			} else {
 				busy.push(new Event(start,end));
 			}
-		}
+		} */
 		//end
 		busy.sort (function (a,b) {
 			if (a.startTime.getHours() > b.startTime.getHours()) {
@@ -56,7 +56,7 @@ function timeRank (n,people) {
 			}
 		});
 		//console.log(busy);
-		people.push(busy); //delete this
+		//people.push(busy); //delete this
 	}
 
 	//console.log(people[0].busy[0]);
