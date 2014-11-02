@@ -20,6 +20,7 @@ window.addEventListener("load", function() {
           var result = JSON.parse(xmlhttp.responseText);
           document.getElementsByTagName("h2")[0].innerHTML = result.event.title;
           document.getElementsByTagName("title")[0].innerHTML = result.event.title;
+          document.getElementById("hostImg").src = "/users/user/" + result.event.user.id + "/photo";
           
           var date = new Date(result.event.start);
           var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -27,7 +28,7 @@ window.addEventListener("load", function() {
           result.event.attendees.forEach(function(attendee) {
             var person = document.createElement("div");
             person.className = "person";
-            person.innerHTML = "<img src='/user.jpg' class='thumbnail' /> " + attendee.displayName;
+            person.innerHTML = "<img src='/users/user/" + attendee.id + "/photo' class='thumbnail' /> " + attendee.displayName;
             document.getElementById("people").appendChild(person);
           });
           
