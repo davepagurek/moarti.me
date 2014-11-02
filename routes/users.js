@@ -11,4 +11,8 @@ router.get('/test/', function(req, res){
 	res.send("Your name is: "+req.user.displayName);
 });
 
+router.get('/profile/', function(req, res){
+	res.send({user: req.user});
+});
+
 module.exports = router;

@@ -11,6 +11,14 @@ var timerank = require("./timerank");
 
 var gcal = require("google-calendar");
 
+router.use(function(req, res, next) {
+	if (!req.user || req.user === undefined) {
+		res.status(401).send({"error": "Unauthorized"});
+	} else {
+		next();
+	}
+});
+
 router.get('/event/:id', function(req, res){
 	var id = req.params.id;
 
@@ -62,7 +70,8 @@ router.post('/new', function(req, res){
 		user: userId,
 		title: title,
 		start: start,
-		end: end
+		end: end,
+		attendees: [userId]
 	});
 
 	theEvent.save(function(err, newEvent){
@@ -78,8 +87,10 @@ router.post('/event/:id/addCalendar', function(req, res){
 	var google_calendar = new gcal.GoogleCalendar(req.user.accessToken);
 	
 	Event.findById(id, function(err, theEvent){
-		theEvent.attendees.push(req.user._id);
-		theEvent.save();
+		if (!req.user._id.equals(theEvent.user)){
+			theEvent.attendees.push(req.user._id);
+			theEvent.save();
+		}
 
 		google_calendar.calendars.get("primary", function(err, calendar){
 			google_calendar.events.list(calendar.id, {timeMin: theEvent.start.toISOString(),
