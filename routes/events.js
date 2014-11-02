@@ -79,6 +79,18 @@ router.post('/event/:id/addCalendar', function(req, res){
 					if (!gCalEvent || !gCalEvent.start || !gCalEvent.end) {
 						return;
 					}
+
+					var startDate = new Date(gCalEvent.start.dateTime || gCalEvent.start.date);
+					var endDate = new Date(gCalEvent.end.dateTime || gCalEvent.start.date);
+
+					if ((endDate.getFullYear() + endDate.getMonth() + endDate.getDate())
+						>
+						(startDate.getFullYear() + startDate.getMonth() + startDate.getDate())) {
+						endDate = new Date(startDate);
+						endDate.setHours(23);
+						endDate.setMinutes(59);
+					}
+
 					var calEvent = new CalEvent({
 						_event: theEvent._id,
 						_user: req.user._id,
@@ -109,12 +121,25 @@ router.post('/event/:id/calculate', function(req, res){
 
 	Event.findById(eventId, function(err, theEvent){
 		CalEvent.find({_event: eventId}, function(err, calEvents) {
-			var abhishekInput = calEvents.map(function(calEvent){
 
+			var abhishekInput = {};
+			calEvents.forEach(function(calEvent){
+				var aCalEvent = new timerank.Event(calEvent.start, calEvent.end);
+
+				if (abhishekInput[calEvent._user] === undefined) {
+					abhishekInput[calEvent._user] = [aCalEvent]
+				} else {
+					abhishekInput[calEvent._user].push(aCalEvent);
+				}
 			});
 
-			// Do the magic
-			var output = [];
+			var finalAbhishekInput = [];
+
+			for (var key in abhishekInput) {
+				finalAbhishekInput.push(abhishekInput[key]);
+			}
+
+			var output = timerank.timeRank(theEvent.attendees.length, finalAbhishekInput);
 
 			res.send({
 				niceTimes: output
