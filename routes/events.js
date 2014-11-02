@@ -81,10 +81,6 @@ router.get('/event/:id', function(req, res){
 });*/
 
 router.get('/event/:id/admin', function(req, res){
-	if (err || !theEvent || !theEvent.user.equals(req.user._id)) {
-		res.status(404).send();
-		return;
-	}
 	res.sendFile(path.resolve(__dirname, "../public/eventAdmin.html"));
 });
 
