@@ -484,3 +484,24 @@ event{
     width:auto;
   }
 }
+
+@media all and (max-width: 450px) {
+  #header .padding {
+    text-align:center;
+  }
+  h1 {
+    display:block;
+    text-align:center;
+  }
+  #me, #login {
+    float:none;
+  }
+  #login {
+    margin-top:20px;
+    margin-right:20px;
+    margin-left:0;
+  }
+  #me {
+    margin-left:0;
+    margin-right:0;
+}
