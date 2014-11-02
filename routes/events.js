@@ -14,10 +14,10 @@ var gcal = require("google-calendar");
 router.get('/event/:id', function(req, res){
 	var id = req.params.id;
 
-	Event.findById(id, function(err, theEvent){
-		var isAttendee = theEvent.attendees.some(function(attendeeId){
-			return attendeeId.equals(req.user._id);
-		});
+	Event.findById(id).populate("user", "displayName").exec(function(err, theEvent){
+		if (err || theEvent === undefined) {
+			res.status(404).send({"error": "Wrong id"});
+		}
 
 		var promises = theEvent.attendees.map(function(attendeeId){
 			return Q.ninvoke(User.findById(attendeeId, "displayName"), "exec");
@@ -35,6 +35,18 @@ router.get('/event/:id', function(req, res){
 router.get('/event/:id/view', function(req, res){
 	res.sendFile(path.resolve(__dirname, "../public/event.html"));
 });
+
+/*router.get('/event/:id/attendees', function(req, res) {
+	var id = req.body.id;
+
+	Event.findById(id, function(err, theEvent) {
+		if (err || theEvent === undefined) {
+			res.status(404).send({"error": "Wrong id"});
+		}
+
+
+	});
+});*/
 
 router.get('/event/:id/admin', function(req, res){
 	res.sendFile(path.resolve(__dirname, "../public/eventAdmin.html"));

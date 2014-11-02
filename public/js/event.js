@@ -67,7 +67,7 @@ window.addEventListener("load", function() {
       }
     };
 
-    xmlhttp.open("GET", "addCalendar", true);
+    xmlhttp.open("POST", "addCalendar", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send();
   });
