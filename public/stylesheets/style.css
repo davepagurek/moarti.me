@@ -113,6 +113,7 @@ input:-ms-input-placeholder {
 }
 
 input[type="submit"], a.button {
+  cursor:pointer;
   border:1px solid #FFF;
   border-radius:5px;
   width:auto;
@@ -157,6 +158,10 @@ form label {
   font-weight:lighter;
   font-style:italic;
   text-align:left;
+}
+
+.message {
+  text-align:center;
 }
 
 .padding {
