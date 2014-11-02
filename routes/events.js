@@ -199,11 +199,15 @@ router.post('/event/:id/calculate', function(req, res){
 
 			var eventInterval = new timerank.Event(theEvent.start, theEvent.end);
 
-			var output = timerank.timeRank(theEvent.attendees.length, finalAbhishekInput, eventInterval);
-
-			res.send({
-				niceTimes: output
-			});
+			if (finalAbhishekInput.length > 0)
+			{
+				var output = timerank.timeRank(theEvent.attendees.length, finalAbhishekInput, eventInterval);
+				res.send({
+					niceTimes: output
+				});
+			} else {
+				res.send({niceTimes: null});
+			}
 		});
 	});
 });
