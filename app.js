@@ -6,14 +6,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 
 var mongoose = require("mongoose");
 
 require("./models");
+
+var routes = require('./routes/index');
+var users = require('./routes/users');
 
 var User = mongoose.model("User");
 
@@ -68,6 +68,10 @@ passport.use(new GoogleStrategy({
                 displayName: profile.displayName,
                 email: profile.emails[0].value
             });
+
+            if (profile.photos && profile.photos.length > 0) {
+                user.photoLink = profile.photos[0].value;
+            }
 
             user.save(function(err, user){
                 done(err, user);
