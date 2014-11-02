@@ -21,7 +21,7 @@ window.addEventListener("load", function() {
           var date = new Date(result.event.start);
           var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
           document.getElementById("date").innerHTML = month[date.getMonth()] + " " + date.getDate();
-          document.getElementById("attendance").innerHTML = result.event.attendees.length;
+          document.getElementById("attendees").innerHTML = result.event.attendees.length + (result.event.attendees.length==1?" person":" people");
         } else {
           console.log("error");
         }
