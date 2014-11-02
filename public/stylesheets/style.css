@@ -376,6 +376,20 @@ form label {
   margin-top:40px;
 }
 
+#upload {
+  color:#FFF;
+}
+
+#upload label {
+  width:100px;
+  text-align:right;
+}
+
+#upload input[type="text"] {
+  margin-left:5px;
+  width: 200px;
+}
+
 .button2 {
 	display: inline;
 	border:1px solid #FFF;

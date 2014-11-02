@@ -47,7 +47,7 @@ window.addEventListener("load", function() {
     }
   });
 
-  upload.addEventListener("click", function() {
+  upload.getElementsByTagName("a")[0].addEventListener("click", function() {
     hide(upload);
     show(document.getElementById("sending"));
     var xmlhttp = new XMLHttpRequest();
