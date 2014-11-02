@@ -4,9 +4,6 @@ window.addEventListener("load", function() {
   var create = document.getElementById("create");
   var creating = document.getElementById("creating");
   var time = document.getElementById("time");
-  date.addEventListener("input", function() {
-    start.value = new Date(date.value).toISOString();
-  });
   
   create.getElementsByTagName("a")[0].addEventListener("click", function() {
     hide(create);
@@ -28,8 +25,22 @@ window.addEventListener("load", function() {
         }
       }
     };
+    
+    var d = new Date(date.value);
+    var t = document.getElementById("early").value;
+    var matches = /(.*):(.*)/.exec(t);
+    d.setHours(parseInt(matches[1]));
+    d.setMinutes(parseInt(matches[2]));
+    var start = d.toISOString();
+    
+    var d2 = new Date(date.value);
+    var t2 = document.getElementById("end").value;
+    var matches2 = /(.*):(.*)/.exec(t2);
+    d2.setHours(parseInt(matches2[1]));
+    d2.setMinutes(parseInt(matches2[2]));
+    var end = d.toISOString();
 
-    var params = "title=" + encodeURIComponent(document.getElementById("name").value) + "&start=" + encodeURIComponent(start.value) + "&time=" + encodeURIComponent(time.value);
+    var params = "title=" + encodeURIComponent(document.getElementById("name").value) + "&start=" + encodeURIComponent(start) + "&end=" + encodeURIComponent(end);
     xmlhttp.open("POST", "/events/new", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);

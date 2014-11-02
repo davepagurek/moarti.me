@@ -28,16 +28,12 @@
           </div>
           <div class="input">
             <label>Date</label><input type="date" id="date" name="date" required="required" />
-            <input type="hidden" value="" id="start" name="start" />
           </div>
           <div class="input">
-            <label>Time</label>
-            <select id="time" name="time">
-              <option value="morning">Morning</option>
-              <option value="afternoon">Afternoon</option>
-              <option value="evening">Evening</option>
-              <option value="night">Night</option>
-            </select>
+            <label>Earliest</label><input type="time" id="early" name="early" required="required" value="08:00" />
+          </div>
+          <div class="input">
+            <label>Latest</label><input type="time" id="end" name="end" required="required" value="21:00" />
           </div>
 					<!--<div class="input">
 						<label>Image</label>
