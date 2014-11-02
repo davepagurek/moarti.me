@@ -4,7 +4,9 @@ var mongoose = require("mongoose");
 mongoose.connect('mongodb://localhost/moartime');
 
 var User = mongoose.model('User', {
-    identifier: String,
+    googleId: String,
+    accessToken: String,
+    refreshToken: String,
     displayName: String,
     email: String
 });

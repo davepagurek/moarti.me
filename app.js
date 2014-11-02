@@ -15,6 +15,8 @@ var mongoose = require("mongoose");
 
 require("./models");
 
+var User = mongoose.model("User");
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -30,7 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // passport
 var passport = require('passport')
-  , GoogleStrategy = require('passport-google').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 
 passport.serializeUser(function(user, done) {
   done(null, user._id);
@@ -43,16 +46,35 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://localhost:8080/auth/google/return',
-    realm: 'http://localhost:8080/'
+    clientID: "348578123862-e5sq0g0e056d8l8nq8835u2s5nvc8s2n.apps.googleusercontent.com",
+    clientSecret: "bIMkioS2sH5XwuacJClhr9-e",
+    callbackURL: "http://localhost:8080/auth/google/callback"
   },
-  function(identifier, profile, done) {
-    var user = new User({identifier: identifier,
-        displayName: profile.displayName,
-        email: profile.emails[0].value});
-    user.save(function(err, user){
-        done(null, user);
-    })
+  function(accessToken, refreshToken, profile, done) {
+    User.find({googleId: profile.id}, function(err, users){
+        if (users.length > 0) {
+            var user = users[0];
+            user.accessToken = accessToken;
+            user.refreshToken = refreshToken;
+
+            user.save(function(err){
+                done(err, user);
+            });
+        } else {
+            var user = new User({
+                googleId: profile.id,
+                accessToken:accessToken,
+                refreshToken:refreshToken,
+                displayName: profile.displayName,
+                email: profile.emails[0].value
+            });
+
+            user.save(function(err, user){
+                done(err, user);
+            });
+        }
+    });
+    
   }
 ));
 
@@ -60,14 +82,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.get('/auth/google', passport.authenticate('google', {session:true}));
+app.get('/auth/google', passport.authenticate('google', {session:true ,
+                                    scope: ["openid", "profile", "email"]}));
 
 // Google will redirect the user to this URL after authentication.  Finish
 // the process by verifying the assertion.  If valid, the user will be
 // logged in.  Otherwise, authentication has failed.
-app.get('/auth/google/return', 
+app.get('/auth/google/callback', 
   passport.authenticate('google', { successRedirect: '/',
-                                    failureRedirect: '/login' }));
+                                    failureRedirect: '/login'}));
 
 app.use('/', routes);
 app.use('/users', users);
