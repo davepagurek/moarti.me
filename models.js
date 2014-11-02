@@ -19,5 +19,3 @@ var Event = mongoose.model('Event', {
 		mongoose.Schema.Types.ObjectId
 	]
 });
-
-var 
