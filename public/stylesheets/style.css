@@ -57,7 +57,7 @@ h3 {
 }
 
 .thumbnail {
-  display:inline-block;
+  display:inline;
   width:50px;
   height:50px;
   border-radius:50%;
@@ -206,4 +206,25 @@ form label {
     width:auto;
     margin:20px;
   }
+}
+
+button {
+	display: inline-block;
+	text-align: right;
+	background-color: #FFF;
+  border-bottom:1px solid rgba(255, 255, 255, 0.5);
+  font-size: inherit;
+  color: transparent;
+	padding: 0px;
+  width: auto;
+	height: auto;
+	font-family: 'Open Sans', sans-serif;
+}
+
+button:hover, button:focus {
+  border-bottom: 1px solid #FFF;
+}
+
+a{
+	display: block;
 }
