@@ -19,18 +19,6 @@ router.get('/event/:id/view', function(req, res){
 	}
 });
 
-router.use(function(req, res, next) {
-	if (!req.user || req.user === undefined) {
-		if (req.xhr) {
-			res.status(401).send({"error": "Unauthorized"});
-		} else {
-			res.redirect("/");
-		}
-	} else {
-		next();
-	}
-});
-
 router.get('/event/:id', function(req, res){
 	var id = req.params.id;
 
@@ -70,6 +58,18 @@ router.get('/event/:id', function(req, res){
 	});
 });
 
+router.use(function(req, res, next) {
+	if (!req.user || req.user === undefined) {
+		if (req.xhr) {
+			res.status(401).send({"error": "Unauthorized"});
+		} else {
+			res.redirect("/");
+		}
+	} else {
+		next();
+	}
+});
+
 /*router.get('/event/:id/attendees', function(req, res) {
 	var id = req.body.id;
 
@@ -90,7 +90,11 @@ router.post('/new', function(req, res){
 	var userId = req.user._id;
 	var title = req.body.title;
 	var start = new Date(req.body.start);
-	var end = new Date(start.getTime() + 24*60*60*1000);
+	var end = new Date(req.body.end);
+
+	end.setFullYear(start.getFullYear());
+	end.setMonth(start.getMonth());
+	end.setDate(start.getDate());
 
 	var theEvent = new Event({
 		user: userId,
@@ -193,7 +197,9 @@ router.post('/event/:id/calculate', function(req, res){
 				finalAbhishekInput.push(abhishekInput[key]);
 			}
 
-			var output = timerank.timeRank(theEvent.attendees.length, finalAbhishekInput);
+			var eventInterval = new timerank.Event(theEvent.start, theEvent.end);
+
+			var output = timerank.timeRank(theEvent.attendees.length, finalAbhishekInput, eventInterval);
 
 			res.send({
 				niceTimes: output
