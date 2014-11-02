@@ -8,6 +8,13 @@ body {
   padding:0;
 }
 
+#scribbler {
+  width: 50%;
+  height:auto;
+  position:absolute;
+  bottom:0;
+}
+
 h1 {
   font-weight: lighter;
   font-size:50px;
@@ -457,12 +464,42 @@ event{
   border-radius:5px;
 }
 
+.half {
+  margin-top:100px;
+  margin-bottom:100px;
+  width:45%;
+  margin-right:10%;
+  display:inline-block;
+  float:right;
+}
+
+.half .padding {
+  width:auto;
+}
+
 /* Responsive styles */
 
 @media all and (max-width: 1200px) {
   .padding {
     width:auto;
     margin:20px;
+  }
+}
+
+@media all and (max-width: 650px) {
+  #scribbler {
+    position:static;
+    display:block;
+    width:auto;
+    max-width:400px;
+    margin: 10px auto;
+  }
+  .half {
+    width:auto;
+    margin-top:0;
+    margin-right:0;
+    margin-bottom: 20px;
+    float:none;
   }
 }
 
