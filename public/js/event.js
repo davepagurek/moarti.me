@@ -14,8 +14,7 @@ window.addEventListener("load", function() {
         if(xmlhttp.status == 200){
 
           var result = JSON.parse(xmlhttp.responseText);
-          console.log(result);
-          document.getElementsByTagName("h2")[0].innerHTML = result.title;
+          document.getElementsByTagName("h2")[0].innerHTML = result.event.title;
         } else {
           console.log("error");
         }
