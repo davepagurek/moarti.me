@@ -8,12 +8,37 @@ function RankedInterval (time,rank) {
 	this.rank = rank;
 }
 
+function inInterval (interval,cur) {
+	if (interval.startTime.getHours() < cur.getHours() && interval.endTime.getHours() > cur.getHours()) {
+		return 0;
+	} else if (interval.startTime.getHours() == cur.getHours() && interval.endTime.getHours() == cur.getHours()) {
+		if (interval.startTime.getMinutes() <= cur.getMinutes() && interval.endTime.getMinutes() > cur.getMinutes()) {
+			return 0;
+		}
+	} else if (interval.startTime.getHours() == cur.getHours()) {
+		if (interval.startTime.getMinutes() <= cur.getMinutes()) {
+			return 0;
+		} else {
+			return -1;
+		}
+	} else if (interval.endTime.getHours() == cur.getHours()) {
+		if (interval.endTime.getMinutes() > cur.getMinutes()) {
+			return 0;
+		} else {
+			return 1;
+		}
+	} else if (interval.startTime.getHours() > cur.getHours()) {
+		return -1;
+	} else if (interval.endTime.getHours() < cur.getHours()) {
+		return 1;
+	}
+}
 /*
 input format:
 n: number of people
 people: 2d array of Event objects (i = person index, j = event index)
 */
-function timeRank (n,people) {
+function timeRank (n,people,pref) {
 	/* var people = [];
 	for (var i = 0; i < 3; i++) {
 		//change to: convert Date objects to Time objects (i.e. make Bilal's parameters work with my objects) OR change my stuff to his format
@@ -184,8 +209,25 @@ function timeRank (n,people) {
 	});
 
 	top = []; //[intervals[0].interval,intervals[1].interval,intervals[2].interval]];
-	for (var i = 0; i < Math.min(3,intervals.length); i++) {
-		top.push(intervals[i].interval);
+	for (var i = 0; i < intervals.length || top.length < 3; i++) {
+		var temp = intervals[i].interval;
+		var hi = inInterval(pref,temp.endTime);
+		var low = inInterval(pref,temp.startTime);
+		if (hi == 0) {
+			if (low == 0) {
+				top.push(temp);
+			}
+			else if (low == -1) {
+				temp.startTime.setHours(pref.startTime.getHours());
+				temp.startTime.setMinutes(pref.startTime.getMinutes());
+				top.push(temp);
+			}
+		} else if (hi == 1) {
+			if (low == 0) {
+				temp.endTime.setHours(pref.endTime.setHours());
+				temp.endTime.setMinutes(pref.endTime.setMinutes());
+			}
+		}
 	}
 	/* console.log(top[0]);
 	console.log(top[1]);
