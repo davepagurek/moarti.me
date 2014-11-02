@@ -12,9 +12,6 @@ var mongoose = require("mongoose");
 
 require("./models");
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 var User = mongoose.model("User");
 
 // view engine setup
@@ -24,16 +21,15 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
-app.use(express_session({ secret: 'smokjsdhf9798' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express_session({ secret: 'smokjsdhf9798' }));
 
 // passport
 var passport = require('passport')
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
 
 passport.serializeUser(function(user, done) {
   done(null, user._id);
@@ -96,6 +92,10 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+
+var routes = require('./routes/index');
+var users = require('./routes/users');
 
 app.use('/', routes);
 app.use('/users', users);
