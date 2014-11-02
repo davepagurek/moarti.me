@@ -115,16 +115,28 @@ input, select {
   border:0;
   border-bottom:1px solid rgba(255, 255, 255, 0.5);
   font-size: inherit;
+  font-weight:normal;
   color:#FFF;
+  line-height:inherit;
   margin-left:20px;
+  padding:0;
   width:400px;
+}
+
+form input {
+  padding: 0 5px;
 }
 
 select {
   -webkit-appearance: none;
 }
 
-input:focus {
+select option {
+  padding:0;
+  margin:0;
+}
+
+input:focus, select:focus {
   outline:0;
 }
 
@@ -205,7 +217,7 @@ input[type="checkbox"]+label.check {
 	height: 26px;
   display:inline-block;
   vertical-align:middle;
-  margin:10px;
+  margin:10px 10px 10px 0;
   position:relative;
   background-color: #FFF;
   -webkit-transition: all 0.1s linear;
@@ -274,7 +286,7 @@ input[type="file"]{
 	color:#000;
 }
 
-#date {
+span#date {
   font-weight:bold;
   white-space: nowrap;
 }

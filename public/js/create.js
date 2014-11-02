@@ -7,7 +7,7 @@ window.addEventListener("load", function() {
     start.value = new Date(date.value).toISOString();
   });
   
-  create.addEventListener("click", function() {
+  create.getElementsByTagName("a")[0].addEventListener("click", function() {
     hide(create);
     show(creating);
     var xmlhttp = new XMLHttpRequest();
