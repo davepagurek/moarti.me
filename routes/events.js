@@ -7,7 +7,7 @@ var User = mongoose.model("User");
 var CalEvent = mongoose.model("CalEvent");
 var Q = require("q");
 
-var timerank = require("./timerank");
+var timerank = require("./timerank2");
 
 var gcal = require("google-calendar");
 
@@ -180,28 +180,15 @@ router.post('/event/:id/calculate', function(req, res){
 
 		CalEvent.find({_event: eventId}, function(err, calEvents) {
 
-			var abhishekInput = {};
-			calEvents.forEach(function(calEvent){
-				var aCalEvent = new timerank.Event(calEvent.start, calEvent.end);
-
-				if (abhishekInput[calEvent._user] === undefined) {
-					abhishekInput[calEvent._user] = [aCalEvent]
-				} else {
-					abhishekInput[calEvent._user].push(aCalEvent);
-				}
+			var abhishekInput = calEvents.map(function(calEvent){
+				return new timerank.Event(calEvent.start, calEvent.end);
 			});
-
-			var finalAbhishekInput = [];
-
-			for (var key in abhishekInput) {
-				finalAbhishekInput.push(abhishekInput[key]);
-			}
 
 			var eventInterval = new timerank.Event(theEvent.start, theEvent.end);
 
 			console.log(eventInterval);
 
-			var output = timerank.timeRank(theEvent.attendees.length, finalAbhishekInput, eventInterval);
+			var output = timerank.timeRank(theEvent.attendees.length, abhishekInput, eventInterval);
 			res.send({
 				niceTimes: output
 			});
