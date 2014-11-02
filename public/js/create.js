@@ -38,11 +38,11 @@ window.addEventListener("load", function() {
     var matches2 = /(.*):(.*)/.exec(t2);
     d2.setHours(parseInt(matches2[1]));
     d2.setMinutes(parseInt(matches2[2]));
-    var end = d2.toISOString();
+    var end = d2.toString();
 
     var params = "title=" + encodeURIComponent(document.getElementById("name").value) + "&start=" + encodeURIComponent(start) + "&end=" + encodeURIComponent(end);
     xmlhttp.open("POST", "/events/new", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send(params);
+    //xmlhttp.send(params);
   });
 });
