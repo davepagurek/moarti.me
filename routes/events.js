@@ -66,7 +66,7 @@ router.post('/event/:id/addCalendar', function(req, res){
 	Event.findById(id, function(err, theEvent){
 		theEvent.attendees.push(req.user._id);
 		theEvent.save();
-		
+
 		google_calendar.calendars.get("primary", function(err, calendar){
 			google_calendar.events.list(calendar.id, {timeMin: theEvent.start.toISOString(),
 			timeMax: theEvent.end.toISOString()},
@@ -103,7 +103,20 @@ router.post('/event/:id/addCalendar', function(req, res){
 });
 
 router.post('/event/:id/calculate', function(req, res){
+	var eventId = req.params.id;
 
+	CalEvent.find({_event: eventId}, function(err, calEvents) {
+		var abhishekInput = calEvents.map(function(calEvent){
+
+		});
+
+		// Do the magic
+		var output = [];
+
+		res.send({
+			niceTimes: output
+		});
+	});
 });
 
 module.exports = router;
