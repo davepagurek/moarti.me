@@ -28,7 +28,15 @@
           <input type="checkbox" id="attending" name="attending" /><label for="attending">Attend this event</label>
         </div>
         <div id="calendar" class="hidden">
-          <a class="button" href="auth/google">Sign in with Google Calendar</a>
+          <div class="collapse" id="upload">
+            <a class="button">Upload Google Calendar</a>
+          </div>
+          <div class="collapse" id="sending" style="height:0; overflow:hidden;">
+            Sending...
+          </div>
+          <div class="collapse" id="success" style="height:0; overflow:hidden;">
+            <i class="fa fa-check"></i> Registered!
+          </div>
         </div>
       </div>
     </div>
