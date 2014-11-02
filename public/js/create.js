@@ -26,23 +26,25 @@ window.addEventListener("load", function() {
       }
     };
     
-    var d = new Date(date.value);
-    var t = document.getElementById("early").value;
+    var d = new Date(date.value + " " + document.getElementById("early").value);
+    /*var t = document.getElementById("early").value;
     var matches = /(.*):(.*)/.exec(t);
     d.setHours(parseInt(matches[1]));
-    d.setMinutes(parseInt(matches[2]));
+    d.setMinutes(parseInt(matches[2]));*/
     var start = d.toISOString();
     
-    var d2 = new Date(date.value);
-    var t2 = document.getElementById("end").value;
+    var d2 = new Date(date.value + " " + document.getElementById("end").value);
+    /*var t2 = document.getElementById("end").value;
     var matches2 = /(.*):(.*)/.exec(t2);
     d2.setHours(parseInt(matches2[1]));
-    d2.setMinutes(parseInt(matches2[2]));
-    var end = d2.toString();
+    d2.setMinutes(parseInt(matches2[2]));*/
+    var end = d2.toISOString();
+    
+    console.log(start, end);
 
     var params = "title=" + encodeURIComponent(document.getElementById("name").value) + "&start=" + encodeURIComponent(start) + "&end=" + encodeURIComponent(end);
     xmlhttp.open("POST", "/events/new", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //xmlhttp.send(params);
+    xmlhttp.send(params);
   });
 });
