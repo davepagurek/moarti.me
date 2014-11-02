@@ -3,7 +3,6 @@
 	<head>
 		<title>Moarti.me - Profile</title>
 		<link href="stylesheets/style.css" type="text/css" rel="stylesheet"/>
-		<script type="text/javascript" src="/js/profile.js"></script>
 	</head>
 	<body>
 		<div class="section" id="header">
@@ -20,28 +19,33 @@
 				<h3>
 					Attending
 				</h3>
-				<a class="button" href="event.html">
-						<img class="thumbnail" src="event.jpg"/>
-						<i><font size="5">Free Pancakes</font></i>
-					<p text-align="left" display="inline">
-						Date: dd/mm/yyyy
-						|| Host: David Hasselhoff
-						|| Attendance: ##
-					</p>
-				</a>
+				<div id="attend">
+					<a class="button" href="event.html">
+							<img class="thumbnail" src="event.jpg"/>
+							<event>Free Pancakes</event>
+						<p text-align="left" display="inline">
+							Date: dd/mm/yyyy
+							|| Host: David Hasselhoff
+							|| Attendance: ##
+						</p>
+					</a>
+				</div>
 				<h3>
 					Invited
 				</h3>
-				<a class="button2" href="event.html">
-						<img class="thumbnail" src="event2.jpg"/>
-						<i><font size="5">Free Pancakes</font></i>
-					<p text-align="left" display="inline">
-						Date: dd/mm/yyyy
-						|| Host: David Hasselhoff
-						|| Attendance: ##
-					</p>
-				</a>
+				<div id="invited">
+					<a class="button2" href="event.html">
+							<img class="thumbnail" src="event2.jpg"/>
+							<event>Free Pancakes</event>
+						<p text-align="left" display="inline">
+							Date: dd/mm/yyyy
+							|| Host: David Hasselhoff
+							|| Attendance: ##
+						</p>
+					</a>
+				</div>
 			</div>
 		</div>
 	</body>
 </html>
+<script src="js/profile.js"></script>
