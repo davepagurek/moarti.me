@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var passport = require('passport');
+var request = require('request');
 
+var mongoose = require('mongoose');
 var User = mongoose.model("User");
 
 /* GET users listing. */
@@ -26,7 +28,11 @@ router.get('/user/:id/photo', function(req, res){
 			if (user.photoLink !== undefined) {
 				res.redirect(user.photoLink);
 			} else {
-				res.status(200).send();
+				request("https://www.googleapis.com/plus/v1/people/"+user.googleId+"?access_token="+req.user.accessToken, function(error, response, body){
+					if (!error && response.statusCode === 200) {
+						request(JSON.parse(body).image.url).pipe(res);
+					}
+				});
 			}
 		});
 	}
