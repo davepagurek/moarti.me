@@ -16,6 +16,7 @@ window.addEventListener("load", function() {
           document.getElementsByTagName("h2")[0].innerHTML = result.event.title;
           document.getElementsByTagName("title")[0].innerHTML = result.event.title;
           document.getElementById("host").innerHTML = result.event.user.displayName;
+          document.getElementById("hostImg").src = "/users/user/" + result.event.user.id + "/photo";
           
           var date = new Date(result.event.start);
           var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
