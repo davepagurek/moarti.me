@@ -27,14 +27,30 @@ router.get('/event/:id', function(req, res){
 			res.status(404).send({"error": "Wrong id"});
 		}
 
+		var response = {
+			event: {
+				id: theEvent._id,
+				user: {
+					displayName: theEvent.user.displayName
+				},
+				title: theEvent.title,
+				start: theEvent.start,
+				end: theEvent.end
+			}
+		};
+
 		var promises = theEvent.attendees.map(function(attendeeId){
 			return Q.ninvoke(User.findById(attendeeId, "displayName"), "exec");
 		});
 
 		Q.all(promises)
 			.then(function(attendees){
-				theEvent.attendees = attendees;
-				res.send({"event":theEvent});
+				response.event.attendees = attendees.map(function(attendee){
+					return {
+						displayName: attendee.displayName
+					};
+				});
+				res.send(response);
 			})
 			.done();
 	});
