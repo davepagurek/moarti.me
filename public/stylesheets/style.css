@@ -271,11 +271,7 @@ form label {
   }
 }
 
-a{
-	font-color: inherit;
-}
-
-.button {
+.button2 {
 	display: inline;
 	border:1px solid #FFF;
 	border-radius:10px;
@@ -293,12 +289,12 @@ a{
   display:inline-block;
 }
 
-.button:hover, button:focus{
+.button2:hover, button2:focus{
   color:#FFF;
   background-color: #c41411;
 	border-bottom: 1px solid #FFF;
 }
-.button2 {
+.button {
 	display: inline;
 	border:1px solid #FFF;
 	border-radius:10px;
@@ -316,7 +312,7 @@ a{
   display:inline-block;
 }
 
-.button2:hover, button2:focus{
+.button:hover, button:focus{
   color:#c41411;
   background-color: #FFF;
 	border-bottom: 1px solid #FFF;
