@@ -105,16 +105,18 @@ router.post('/event/:id/addCalendar', function(req, res){
 router.post('/event/:id/calculate', function(req, res){
 	var eventId = req.params.id;
 
-	CalEvent.find({_event: eventId}, function(err, calEvents) {
-		var abhishekInput = calEvents.map(function(calEvent){
+	Event.findById(eventId, function(err, theEvent){
+		CalEvent.find({_event: eventId}, function(err, calEvents) {
+			var abhishekInput = calEvents.map(function(calEvent){
 
-		});
+			});
 
-		// Do the magic
-		var output = [];
+			// Do the magic
+			var output = [];
 
-		res.send({
-			niceTimes: output
+			res.send({
+				niceTimes: output
+			});
 		});
 	});
 });
