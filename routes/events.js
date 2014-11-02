@@ -52,10 +52,12 @@ router.post('/event/new', function(req, res){
 });
 
 router.post('/event/:id/addCalendar', function(req, res){
-	
+
 });
 
 router.post('/event/:id/calculate', function(req, res){
 
 });
+
+module.exports = router;
 
