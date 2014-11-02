@@ -242,8 +242,8 @@ form label {
   padding:20px;
 }
 
-#calculate {
-  margin:40px auto;
+#calculateAction {
+  margin-top:40px;
 }
 
 @media all and (max-width: 1200px) {
