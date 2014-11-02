@@ -78,6 +78,10 @@ input {
   width:400px;
 }
 
+input:focus {
+  outline:0;
+}
+
 input:hover, input:focus {
   border-bottom: 1px solid #FFF;
 }
