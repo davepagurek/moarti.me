@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 var mongoose = require('mongoose');
 var Event = mongoose.model("Event");
 var User = mongoose.model("User");
 var CalEvent = mongoose.model("CalEvent");
 var Q = require("q");
+
+var timerank = require("./timerank");
 
 var gcal = require("google-calendar");
 
@@ -29,6 +32,14 @@ router.get('/event/:id', function(req, res){
 	});
 });
 
+router.get('/event/:id/view', function(req, res){
+	res.sendFile(path.resolve(__dirname, "../public/event.html"));
+});
+
+router.get('/event/:id/admin', function(req, res){
+	res.sendFile(path.resolve(__dirname, "../public/eventAdmin.html"));
+});
+
 router.post('/new', function(req, res){
 	var userId = req.user._id;
 	var title = req.body.title;
@@ -42,9 +53,9 @@ router.post('/new', function(req, res){
 		end: end
 	});
 
-	theEvent.save(function(err){
+	theEvent.save(function(err, newEvent){
 		if (!err) {
-			res.send({success: 1});
+			res.send({success: 1, id: newEvent.id});
 		}
 	});
 });
@@ -55,14 +66,31 @@ router.post('/event/:id/addCalendar', function(req, res){
 	var google_calendar = new gcal.GoogleCalendar(req.user.accessToken);
 	
 	Event.findById(id, function(err, theEvent){
+		theEvent.attendees.push(req.user._id);
+		theEvent.save();
+
 		google_calendar.calendars.get("primary", function(err, calendar){
-			google_calendar.events.list(calendar.id, function(err, response){
+			google_calendar.events.list(calendar.id, {timeMin: theEvent.start.toISOString(),
+			timeMax: theEvent.end.toISOString()},
+			function(err, response){
 				var items = response.items;
 
 				var processEvent = function(gCalEvent) {
 					if (!gCalEvent || !gCalEvent.start || !gCalEvent.end) {
 						return;
 					}
+
+					var startDate = new Date(gCalEvent.start.dateTime || gCalEvent.start.date);
+					var endDate = new Date(gCalEvent.end.dateTime || gCalEvent.start.date);
+
+					if ((endDate.getFullYear() + endDate.getMonth() + endDate.getDate())
+						>
+						(startDate.getFullYear() + startDate.getMonth() + startDate.getDate())) {
+						endDate = new Date(startDate);
+						endDate.setHours(23);
+						endDate.setMinutes(59);
+					}
+
 					var calEvent = new CalEvent({
 						_event: theEvent._id,
 						_user: req.user._id,
@@ -89,7 +117,35 @@ router.post('/event/:id/addCalendar', function(req, res){
 });
 
 router.post('/event/:id/calculate', function(req, res){
+	var eventId = req.params.id;
 
+	Event.findById(eventId, function(err, theEvent){
+		CalEvent.find({_event: eventId}, function(err, calEvents) {
+
+			var abhishekInput = {};
+			calEvents.forEach(function(calEvent){
+				var aCalEvent = new timerank.Event(calEvent.start, calEvent.end);
+
+				if (abhishekInput[calEvent._user] === undefined) {
+					abhishekInput[calEvent._user] = [aCalEvent]
+				} else {
+					abhishekInput[calEvent._user].push(aCalEvent);
+				}
+			});
+
+			var finalAbhishekInput = [];
+
+			for (var key in abhishekInput) {
+				finalAbhishekInput.push(abhishekInput[key]);
+			}
+
+			var output = timerank.timeRank(theEvent.attendees.length, finalAbhishekInput);
+
+			res.send({
+				niceTimes: output
+			});
+		});
+	});
 });
 
 module.exports = router;
